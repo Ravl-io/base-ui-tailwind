@@ -1,0 +1,35 @@
+import type { StorybookConfig } from '@storybook/react-vite';
+
+const config: StorybookConfig = {
+  stories: [
+    '../src/**/*.mdx',
+    '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
+  ],
+  addons: [
+    '@chromatic-com/storybook',
+    '@storybook/addon-vitest',
+    '@storybook/addon-a11y',
+    '@storybook/addon-docs',
+  ],
+  framework: '@storybook/react-vite',
+  viteFinal: async (config) => {
+    config.build = {
+      ...config.build,
+      rollupOptions: {
+        ...config.build?.rollupOptions,
+        output: {
+          manualChunks: {
+            react: ['react', 'react-dom'],
+            recharts: ['recharts'],
+            embla: ['embla-carousel-react'],
+            cmdk: ['cmdk'],
+            baseui: ['@base-ui/react'],
+          },
+        },
+      },
+    };
+    return config;
+  },
+};
+
+export default config;
