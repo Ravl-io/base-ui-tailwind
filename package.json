@@ -4,12 +4,14 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "postinstall": "playwright install chromium",
     "clear": "rimraf dist storybook-static",
     "dev": "storybook dev -p 6006",
     "build": "pnpm clear && tsc -p tsconfig.build.json && vite build",
     "build:storybook": "pnpm clear && storybook build",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "test": "vitest"
   },
   "dependencies": {
     "@base-ui/react": "^1.2.0",
@@ -58,6 +60,8 @@
     "@chromatic-com/storybook": "^5.0.1",
     "@storybook/addon-vitest": "^10.2.16",
     "@storybook/addon-a11y": "^10.2.16",
+
+    "@storybook/test": "^8.6.15",
     "@storybook/addon-docs": "^10.2.16",
     "eslint-plugin-storybook": "^10.2.16",
     "vitest": "^4.0.18",

@@ -1,34 +1,31 @@
-import type { StorybookConfig } from '@storybook/react-vite';
+import { mergeConfig } from "vite";
+import { fileURLToPath } from "node:url";
+import type { StorybookConfig } from "@storybook/react-vite";
 
 const config: StorybookConfig = {
   stories: [
-    '../src/**/*.mdx',
-    '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
+    "../src/**/*.mdx",
+    "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)",
   ],
   addons: [
-    '@chromatic-com/storybook',
-    '@storybook/addon-vitest',
-    '@storybook/addon-a11y',
-    '@storybook/addon-docs',
+    "@chromatic-com/storybook",
+    "@storybook/addon-vitest",
+    "@storybook/addon-a11y",
+    "@storybook/addon-docs",
   ],
-  framework: '@storybook/react-vite',
-  viteFinal: async (config) => {
-    config.build = {
-      ...config.build,
-      rollupOptions: {
-        ...config.build?.rollupOptions,
-        output: {
-          manualChunks: {
-            react: ['react', 'react-dom'],
-            recharts: ['recharts'],
-            embla: ['embla-carousel-react'],
-            cmdk: ['cmdk'],
-            baseui: ['@base-ui/react'],
-          },
+  framework: "@storybook/react-vite",
+  viteFinal: async (storybookConfig) => {
+    const { default: rootConfig } = await import("../vite.config.ts");
+
+    return mergeConfig(storybookConfig, {
+      resolve: {
+        alias: {
+          ...rootConfig.resolve?.alias,
+          "@sb": fileURLToPath(new URL(".", import.meta.url)),
         },
       },
-    };
-    return config;
+      build: rootConfig.build,
+    });
   },
 };
 

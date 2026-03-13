@@ -26,7 +26,7 @@ export default defineConfig([
     },
   },
   {
-    files: ['src/components/ui/**/*.{ts,tsx}'],
+    files: ['src/components/ingredients/**/*.{ts,tsx}'],
     rules: {
       'react-refresh/only-export-components': 'off',
     },
