@@ -1,5 +1,11 @@
 # @ravl/base-ui-tailwind
 
+## 0.2.1
+
+### Patch Changes
+
+- c8d29eb: update release again
+
 ## 0.2.0
 
 ### Minor Changes
