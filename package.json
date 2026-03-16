@@ -11,7 +11,7 @@
   },
   "type": "module",
   "scripts": {
-    "postinstall": "playwright install chromium",
+    "postinstall": "[ -z \"$CI\" ] && playwright install chromium || true",
     "clear": "rimraf dist storybook-static",
     "dev": "storybook dev -p 6006",
     "build": "pnpm clear && tsc -p tsconfig.build.json && vite build",
