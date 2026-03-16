@@ -23,7 +23,17 @@ vi.mock("@/components/ingredients/input-group", () => ({
   InputGroupAddon: ({ children }: Record<string, unknown>) => <div>{children as React.ReactNode}</div>,
 }));
 
-import { Command, CommandDialog } from "../index";
+import {
+  Command,
+  CommandDialog,
+  CommandInput,
+  CommandList,
+  CommandEmpty,
+  CommandGroup,
+  CommandItem,
+  CommandShortcut,
+  CommandSeparator,
+} from "../index";
 
 describe("CommandDialog", () => {
   describe("default props", () => {
@@ -46,5 +56,37 @@ describe("CommandDialog", () => {
       expect(screen.getByText("Custom Title")).toBeInTheDocument();
       expect(screen.getByText("Custom description")).toBeInTheDocument();
     });
+  });
+});
+
+describe("Command", () => {
+  it("should render with sub-components", () => {
+    render(
+      <Command>
+        <CommandInput placeholder="Search..." />
+        <CommandList>
+          <CommandGroup heading="Actions">
+            <CommandItem>
+              Copy <CommandShortcut>Ctrl+C</CommandShortcut>
+            </CommandItem>
+            <CommandSeparator />
+            <CommandItem>Paste</CommandItem>
+          </CommandGroup>
+        </CommandList>
+      </Command>,
+    );
+    expect(screen.getByPlaceholderText("Search...")).toBeInTheDocument();
+    expect(screen.getByText("Ctrl+C")).toBeInTheDocument();
+  });
+
+  it("should render CommandEmpty", () => {
+    render(
+      <Command>
+        <CommandList>
+          <CommandEmpty>No results</CommandEmpty>
+        </CommandList>
+      </Command>,
+    );
+    expect(screen.getByText("No results")).toBeInTheDocument();
   });
 });

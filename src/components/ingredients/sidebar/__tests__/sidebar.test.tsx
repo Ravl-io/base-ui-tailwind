@@ -77,6 +77,24 @@ import {
   SidebarTrigger,
   SidebarRail,
   SidebarMenuSkeleton,
+  SidebarInset,
+  SidebarInput,
+  SidebarHeader,
+  SidebarFooter,
+  SidebarSeparator,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupLabel,
+  SidebarGroupAction,
+  SidebarGroupContent,
+  SidebarMenu,
+  SidebarMenuItem,
+  SidebarMenuButton,
+  SidebarMenuAction,
+  SidebarMenuBadge,
+  SidebarMenuSub,
+  SidebarMenuSubItem,
+  SidebarMenuSubButton,
   useSidebar,
 } from "../index";
 
@@ -172,5 +190,86 @@ describe("keyboard shortcut", () => {
     fireEvent.keyDown(window, { key: "b", ctrlKey: true });
     const sidebarAfter = container.querySelector("[data-slot='sidebar']");
     expect(sidebarAfter).toHaveAttribute("data-state", "collapsed");
+  });
+});
+
+describe("Sidebar sub-components", () => {
+  it("should render SidebarInset", () => {
+    renderWithProvider(<SidebarInset>Main content</SidebarInset>);
+    expect(screen.getByText("Main content")).toBeInTheDocument();
+  });
+
+  it("should render SidebarInput", () => {
+    renderWithProvider(<SidebarInput placeholder="Search" />);
+    expect(screen.getByPlaceholderText("Search")).toBeInTheDocument();
+  });
+
+  it("should render SidebarHeader", () => {
+    renderWithProvider(<SidebarHeader>Header</SidebarHeader>);
+    expect(screen.getByText("Header")).toBeInTheDocument();
+  });
+
+  it("should render SidebarFooter", () => {
+    renderWithProvider(<SidebarFooter>Footer</SidebarFooter>);
+    expect(screen.getByText("Footer")).toBeInTheDocument();
+  });
+
+  it("should render SidebarSeparator", () => {
+    renderWithProvider(<SidebarSeparator data-testid="sep" />);
+    expect(screen.getByTestId("sep")).toBeInTheDocument();
+  });
+
+  it("should render SidebarContent", () => {
+    renderWithProvider(<SidebarContent>Content</SidebarContent>);
+    expect(screen.getByText("Content")).toBeInTheDocument();
+  });
+
+  it("should render SidebarGroup with sub-components", () => {
+    renderWithProvider(
+      <SidebarGroup>
+        <SidebarGroupLabel>Label</SidebarGroupLabel>
+        <SidebarGroupAction>Action</SidebarGroupAction>
+        <SidebarGroupContent>Group content</SidebarGroupContent>
+      </SidebarGroup>,
+    );
+    expect(screen.getByText("Label")).toBeInTheDocument();
+    expect(screen.getByText("Action")).toBeInTheDocument();
+    expect(screen.getByText("Group content")).toBeInTheDocument();
+  });
+
+  it("should render SidebarMenu with items", () => {
+    renderWithProvider(
+      <SidebarMenu>
+        <SidebarMenuItem>
+          <SidebarMenuButton>Button</SidebarMenuButton>
+          <SidebarMenuAction>Action</SidebarMenuAction>
+          <SidebarMenuBadge>5</SidebarMenuBadge>
+        </SidebarMenuItem>
+      </SidebarMenu>,
+    );
+    expect(screen.getByText("Button")).toBeInTheDocument();
+    expect(screen.getByText("5")).toBeInTheDocument();
+  });
+
+  it("should render SidebarMenuButton with tooltip", () => {
+    renderWithProvider(
+      <SidebarMenu>
+        <SidebarMenuItem>
+          <SidebarMenuButton tooltip="Tooltip text">Button</SidebarMenuButton>
+        </SidebarMenuItem>
+      </SidebarMenu>,
+    );
+    expect(screen.getByText("Button")).toBeInTheDocument();
+  });
+
+  it("should render SidebarMenuSub with items", () => {
+    renderWithProvider(
+      <SidebarMenuSub>
+        <SidebarMenuSubItem>
+          <SidebarMenuSubButton>Sub button</SidebarMenuSubButton>
+        </SidebarMenuSubItem>
+      </SidebarMenuSub>,
+    );
+    expect(screen.getByText("Sub button")).toBeInTheDocument();
   });
 });

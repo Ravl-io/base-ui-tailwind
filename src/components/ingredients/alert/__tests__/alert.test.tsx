@@ -1,10 +1,31 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
-import { Alert } from "../index";
+import { Alert, AlertTitle, AlertDescription, AlertAction } from "../index";
 
 describe("Alert", () => {
   it("should render", () => {
-    const { container } = render(<Alert>Alert content</Alert>);
-    expect(container.innerHTML).not.toBe("");
+    render(<Alert>Alert content</Alert>);
+    expect(screen.getByRole("alert")).toBeInTheDocument();
+  });
+});
+
+describe("AlertTitle", () => {
+  it("should render", () => {
+    render(<AlertTitle>Title</AlertTitle>);
+    expect(screen.getByText("Title")).toBeInTheDocument();
+  });
+});
+
+describe("AlertDescription", () => {
+  it("should render", () => {
+    render(<AlertDescription>Description</AlertDescription>);
+    expect(screen.getByText("Description")).toBeInTheDocument();
+  });
+});
+
+describe("AlertAction", () => {
+  it("should render", () => {
+    render(<AlertAction>Action</AlertAction>);
+    expect(screen.getByText("Action")).toBeInTheDocument();
   });
 });

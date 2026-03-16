@@ -5,8 +5,12 @@ import {
   AlertDialogTrigger,
   AlertDialogContent,
   AlertDialogCancel,
+  AlertDialogAction,
   AlertDialogTitle,
   AlertDialogDescription,
+  AlertDialogHeader,
+  AlertDialogFooter,
+  AlertDialogMedia,
 } from "../index";
 
 function renderOpenDialog(contentProps: Record<string, unknown> = {}, children?: React.ReactNode) {
@@ -35,6 +39,34 @@ describe("AlertDialogContent", () => {
       const content = screen.getByText("Title").closest("[data-slot='alert-dialog-content']");
       expect(content).toHaveAttribute("data-size", "sm");
     });
+  });
+});
+
+describe("AlertDialogHeader", () => {
+  it("should render", () => {
+    renderOpenDialog({}, <AlertDialogHeader>Header</AlertDialogHeader>);
+    expect(screen.getByText("Header")).toBeInTheDocument();
+  });
+});
+
+describe("AlertDialogFooter", () => {
+  it("should render", () => {
+    renderOpenDialog({}, <AlertDialogFooter>Footer</AlertDialogFooter>);
+    expect(screen.getByText("Footer")).toBeInTheDocument();
+  });
+});
+
+describe("AlertDialogMedia", () => {
+  it("should render", () => {
+    renderOpenDialog({}, <AlertDialogMedia>Media</AlertDialogMedia>);
+    expect(screen.getByText("Media")).toBeInTheDocument();
+  });
+});
+
+describe("AlertDialogAction", () => {
+  it("should render", () => {
+    renderOpenDialog({}, <AlertDialogAction>Confirm</AlertDialogAction>);
+    expect(screen.getByRole("button", { name: "Confirm" })).toBeInTheDocument();
   });
 });
 

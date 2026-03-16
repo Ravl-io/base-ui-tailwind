@@ -18,7 +18,7 @@ vi.mock("@base-ui/react/tabs", () => {
   return { Tabs: { Root, List, Tab, Panel } };
 });
 
-import { Tabs, TabsList } from "../index";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "../index";
 
 describe("Tabs", () => {
   describe("orientation", () => {
@@ -45,5 +45,32 @@ describe("TabsList", () => {
       render(<Tabs><TabsList variant="line" /></Tabs>);
       expect(screen.getByRole("tablist")).toHaveAttribute("data-variant", "line");
     });
+  });
+});
+
+describe("TabsTrigger", () => {
+  it("should render", () => {
+    render(
+      <Tabs>
+        <TabsList>
+          <TabsTrigger value="tab1">Tab 1</TabsTrigger>
+        </TabsList>
+      </Tabs>,
+    );
+    expect(screen.getByRole("tab")).toHaveTextContent("Tab 1");
+  });
+});
+
+describe("TabsContent", () => {
+  it("should render", () => {
+    render(
+      <Tabs defaultValue="tab1">
+        <TabsList>
+          <TabsTrigger value="tab1">Tab 1</TabsTrigger>
+        </TabsList>
+        <TabsContent value="tab1">Content 1</TabsContent>
+      </Tabs>,
+    );
+    expect(screen.getByText("Content 1")).toBeInTheDocument();
   });
 });

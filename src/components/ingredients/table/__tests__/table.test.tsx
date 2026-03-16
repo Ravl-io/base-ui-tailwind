@@ -1,11 +1,21 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
-import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "../index";
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableFooter,
+  TableRow,
+  TableHead,
+  TableCell,
+  TableCaption,
+} from "../index";
 
 describe("Table", () => {
-  it("should render", () => {
-    const { container } = render(
+  it("should render with all sub-components", () => {
+    render(
       <Table>
+        <TableCaption>Caption</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead>Name</TableHead>
@@ -16,8 +26,14 @@ describe("Table", () => {
             <TableCell>Value</TableCell>
           </TableRow>
         </TableBody>
+        <TableFooter>
+          <TableRow>
+            <TableCell>Total</TableCell>
+          </TableRow>
+        </TableFooter>
       </Table>,
     );
-    expect(container.innerHTML).not.toBe("");
+    expect(screen.getByText("Caption")).toBeInTheDocument();
+    expect(screen.getByText("Total")).toBeInTheDocument();
   });
 });

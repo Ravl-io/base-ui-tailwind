@@ -6,6 +6,9 @@ import {
   SelectValue,
   SelectContent,
   SelectItem,
+  SelectGroup,
+  SelectLabel,
+  SelectSeparator,
 } from "../index";
 
 describe("Select", () => {
@@ -19,8 +22,7 @@ describe("Select", () => {
             </SelectTrigger>
           </Select>,
         );
-
-        expect(document.querySelector('[data-slot="select-trigger"]')).toHaveAttribute("data-size", "default");
+        expect(document.querySelector("[data-slot='select-trigger']")).toHaveAttribute("data-size", "default");
       });
 
       it("should set data-size to sm when size prop is sm", () => {
@@ -31,24 +33,29 @@ describe("Select", () => {
             </SelectTrigger>
           </Select>,
         );
-
-        expect(document.querySelector('[data-slot="select-trigger"]')).toHaveAttribute("data-size", "sm");
+        expect(document.querySelector("[data-slot='select-trigger']")).toHaveAttribute("data-size", "sm");
       });
     });
   });
 
-  it("should render content in portal when open", () => {
+  it("should render content with sub-components when open", () => {
     render(
       <Select open>
         <SelectTrigger>
           <SelectValue placeholder="Pick" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="a">A</SelectItem>
+          <SelectGroup>
+            <SelectLabel>Group</SelectLabel>
+            <SelectItem value="a">A</SelectItem>
+            <SelectSeparator />
+            <SelectItem value="b">B</SelectItem>
+          </SelectGroup>
         </SelectContent>
       </Select>,
     );
-
-    expect(document.body.querySelector('[data-slot="select-content"]')).toBeInTheDocument();
+    expect(document.body.querySelector("[data-slot='select-content']")).toBeInTheDocument();
+    expect(document.body.querySelector("[data-slot='select-label']")).toBeInTheDocument();
+    expect(document.body.querySelector("[data-slot='select-separator']")).toBeInTheDocument();
   });
 });

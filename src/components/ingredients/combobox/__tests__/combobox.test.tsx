@@ -5,6 +5,17 @@ import {
   ComboboxInput,
   ComboboxChips,
   ComboboxChip,
+  ComboboxChipsInput,
+  ComboboxContent,
+  ComboboxList,
+  ComboboxItem,
+  ComboboxGroup,
+  ComboboxLabel,
+  ComboboxEmpty,
+  ComboboxSeparator,
+  ComboboxTrigger,
+  ComboboxValue,
+  useComboboxAnchor,
 } from "../index";
 
 describe("ComboboxInput", () => {
@@ -41,6 +52,16 @@ describe("ComboboxInput", () => {
       const clearButtons = addon?.querySelectorAll("[data-slot='combobox-clear']") ?? [];
       expect(clearButtons.length).toBe(0);
     });
+
+    it("should render addon when showClear is true", () => {
+      const { container } = render(
+        <Combobox>
+          <ComboboxInput showClear showTrigger={false} />
+        </Combobox>,
+      );
+      const addon = container.querySelector("[data-slot='input-group-addon']");
+      expect(addon).toBeInTheDocument();
+    });
   });
 });
 
@@ -69,5 +90,67 @@ describe("ComboboxChip", () => {
       const remove = document.querySelector("[data-slot='combobox-chip-remove']");
       expect(remove).not.toBeInTheDocument();
     });
+  });
+});
+
+describe("ComboboxChipsInput", () => {
+  it("should render", () => {
+    render(
+      <Combobox>
+        <ComboboxChips>
+          <ComboboxChipsInput />
+        </ComboboxChips>
+      </Combobox>,
+    );
+    expect(document.querySelector("[data-slot='combobox-chip-input']")).toBeInTheDocument();
+  });
+});
+
+describe("ComboboxValue", () => {
+  it("should render inside trigger", () => {
+    render(
+      <Combobox>
+        <ComboboxTrigger>
+          <ComboboxValue />
+        </ComboboxTrigger>
+      </Combobox>,
+    );
+    expect(document.querySelector("[data-slot='combobox-trigger']")).toBeInTheDocument();
+  });
+});
+
+describe("ComboboxContent", () => {
+  it("should render with sub-components when open", () => {
+    render(
+      <Combobox open>
+        <ComboboxInput />
+        <ComboboxContent>
+          <ComboboxList>
+            <ComboboxGroup>
+              <ComboboxLabel>Fruits</ComboboxLabel>
+              <ComboboxItem value="apple">Apple</ComboboxItem>
+              <ComboboxSeparator />
+              <ComboboxItem value="banana">Banana</ComboboxItem>
+            </ComboboxGroup>
+            <ComboboxEmpty>No results</ComboboxEmpty>
+          </ComboboxList>
+        </ComboboxContent>
+      </Combobox>,
+    );
+    expect(document.body.querySelector("[data-slot='combobox-content']")).toBeInTheDocument();
+    expect(document.body.querySelector("[data-slot='combobox-label']")).toBeInTheDocument();
+    expect(document.body.querySelector("[data-slot='combobox-separator']")).toBeInTheDocument();
+  });
+});
+
+describe("useComboboxAnchor", () => {
+  it("should return a ref object", () => {
+    let ref: React.RefObject<HTMLDivElement | null> | undefined;
+    function TestComponent() {
+      ref = useComboboxAnchor();
+      return null;
+    }
+    render(<TestComponent />);
+    expect(ref).toHaveProperty("current", null);
   });
 });
