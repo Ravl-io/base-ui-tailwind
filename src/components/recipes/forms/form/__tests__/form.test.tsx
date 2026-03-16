@@ -1,20 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 
-vi.mock("@/components/ingredients/button", () => ({
-  Button: ({ children, onClick, type, disabled, isLoading, className, ...props }: Record<string, unknown>) => (
-    <button
-      type={type as string}
-      onClick={onClick as React.MouseEventHandler}
-      disabled={(disabled || isLoading) as boolean}
-      aria-busy={isLoading ? "true" : undefined}
-      className={className as string}
-      {...props}
-    >
-      {children as React.ReactNode}
-    </button>
-  ),
-}));
 
 import { Form } from "../index";
 

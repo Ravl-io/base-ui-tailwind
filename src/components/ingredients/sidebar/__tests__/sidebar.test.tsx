@@ -17,52 +17,12 @@ beforeAll(() => {
   });
 });
 
-vi.mock("@base-ui/react/merge-props", () => ({
-  mergeProps: (...args: Record<string, unknown>[]) => Object.assign({}, ...args),
-}));
-
-vi.mock("@base-ui/react/use-render", () => ({
-  useRender: ({ props, state }: { props: Record<string, unknown>; state: Record<string, unknown> }) => {
-    const Tag = (state.slot === "sidebar-menu-button" || state.slot === "sidebar-menu-action" || state.slot === "sidebar-group-action" ? "button" : "div") as unknown as React.ElementType;
-    return (
-      <Tag
-        data-slot={state.slot}
-        data-sidebar={state.sidebar}
-        className={props.className}
-        {...props}
-      >
-        {(props as Record<string, unknown>).children as React.ReactNode}
-      </Tag>
-    );
-  },
-}));
-
-vi.mock("@/components/ingredients/button", () => ({
-  Button: ({ children, onClick, className, ...props }: Record<string, unknown>) => (
-    <button onClick={onClick as React.MouseEventHandler} className={className as string} {...props}>
-      {children as React.ReactNode}
-    </button>
-  ),
-}));
-
-vi.mock("@/components/ingredients/input", () => ({
-  Input: (props: Record<string, unknown>) => <input {...props} />,
-}));
-
-vi.mock("@/components/ingredients/separator", () => ({
-  Separator: (props: Record<string, unknown>) => <hr {...props} />,
-}));
-
 vi.mock("@/components/ingredients/sheet", () => ({
   Sheet: ({ children }: Record<string, unknown>) => <div>{children as React.ReactNode}</div>,
   SheetContent: ({ children }: Record<string, unknown>) => <div>{children as React.ReactNode}</div>,
   SheetDescription: ({ children }: Record<string, unknown>) => <p>{children as React.ReactNode}</p>,
   SheetHeader: ({ children }: Record<string, unknown>) => <div>{children as React.ReactNode}</div>,
   SheetTitle: ({ children }: Record<string, unknown>) => <h2>{children as React.ReactNode}</h2>,
-}));
-
-vi.mock("@/components/ingredients/skeleton", () => ({
-  Skeleton: (props: Record<string, unknown>) => <div {...props} />,
 }));
 
 vi.mock("@/components/ingredients/tooltip", () => ({
