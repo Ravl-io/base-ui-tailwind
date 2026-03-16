@@ -1,18 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { describe, it, expect, vi } from "vitest";
-
-vi.mock("@base-ui/react/toggle", () => ({
-  Toggle: ({ children, className, ...props }: Record<string, unknown>) => (
-    <button role="button" className={className as string} {...props}>{children as React.ReactNode}</button>
-  ),
-}));
-
-vi.mock("@base-ui/react/toggle-group", () => ({
-  ToggleGroup: ({ children, className, ...props }: Record<string, unknown>) => (
-    <div role="group" className={className as string} {...props}>{children as React.ReactNode}</div>
-  ),
-}));
-
+import { describe, it, expect } from "vitest";
 import { ToggleGroup, ToggleGroupItem } from "../index";
 
 describe("ToggleGroup", () => {

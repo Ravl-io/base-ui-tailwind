@@ -1,23 +1,5 @@
-import { forwardRef, type Ref, type ReactNode } from "react";
 import { render, screen } from "@testing-library/react";
-import { describe, it, expect, vi } from "vitest";
-
-vi.mock("@base-ui/react/tabs", () => {
-  const Root = forwardRef(({ children, className, ...props }: Record<string, unknown>, ref: Ref<HTMLDivElement>) => (
-    <div ref={ref} className={className as string} {...props}>{children as ReactNode}</div>
-  ));
-  const List = forwardRef(({ children, className, ...props }: Record<string, unknown>, ref: Ref<HTMLDivElement>) => (
-    <div ref={ref} role="tablist" className={className as string} {...props}>{children as ReactNode}</div>
-  ));
-  const Tab = forwardRef(({ children, className, ...props }: Record<string, unknown>, ref: Ref<HTMLButtonElement>) => (
-    <button ref={ref} role="tab" className={className as string} {...props}>{children as ReactNode}</button>
-  ));
-  const Panel = forwardRef(({ children, className, ...props }: Record<string, unknown>, ref: Ref<HTMLDivElement>) => (
-    <div ref={ref} role="tabpanel" className={className as string} {...props}>{children as ReactNode}</div>
-  ));
-  return { Tabs: { Root, List, Tab, Panel } };
-});
-
+import { describe, it, expect } from "vitest";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "../index";
 
 describe("Tabs", () => {

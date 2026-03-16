@@ -18,10 +18,6 @@ vi.mock("@/components/ingredients/dialog", () => ({
   DialogTitle: ({ children }: Record<string, unknown>) => <h2>{children as React.ReactNode}</h2>,
 }));
 
-vi.mock("@/components/ingredients/input-group", () => ({
-  InputGroup: ({ children, className, ...props }: Record<string, unknown>) => <div className={className as string} {...props}>{children as React.ReactNode}</div>,
-  InputGroupAddon: ({ children }: Record<string, unknown>) => <div>{children as React.ReactNode}</div>,
-}));
 
 import {
   Command,

@@ -1,26 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { describe, it, expect, vi } from "vitest";
-
-vi.mock("@/components/ingredients/field", () => ({
-  Field: ({ children, ...props }: Record<string, unknown>) => (
-    <div role="group" {...props}>{children as React.ReactNode}</div>
-  ),
-  FieldLabel: ({ children, ...props }: Record<string, unknown>) => (
-    <label {...props}>{children as React.ReactNode}</label>
-  ),
-  FieldDescription: ({ children, ...props }: Record<string, unknown>) => (
-    <p {...props}>{children as React.ReactNode}</p>
-  ),
-  FieldError: ({ children, errors, ...props }: Record<string, unknown>) => {
-    const msg = children || (errors as Array<{ message: string }> | undefined)?.[0]?.message;
-    return msg ? <div role="alert" {...props}>{msg as React.ReactNode}</div> : null;
-  },
-}));
-
-vi.mock("@/components/ingredients/input", () => ({
-  Input: (props: Record<string, unknown>) => <input {...props} />,
-}));
-
+import { describe, it, expect } from "vitest";
 import { Input } from "../index";
 
 describe("Input recipe", () => {
