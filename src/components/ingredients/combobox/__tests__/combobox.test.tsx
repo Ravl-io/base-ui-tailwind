@@ -145,12 +145,12 @@ describe("ComboboxContent", () => {
 
 describe("useComboboxAnchor", () => {
   it("should return a ref object", () => {
-    let ref: React.RefObject<HTMLDivElement | null> | undefined;
+    const refs: React.RefObject<HTMLDivElement | null>[] = [];
     function TestComponent() {
-      ref = useComboboxAnchor();
+      refs.push(useComboboxAnchor());
       return null;
     }
     render(<TestComponent />);
-    expect(ref).toHaveProperty("current", null);
+    expect(refs[0]).toHaveProperty("current", null);
   });
 });

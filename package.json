@@ -1,8 +1,11 @@
 {
   "name": "@ravl/base-ui-tailwind",
-  "private": true,
   "version": "0.0.0",
   "packageManager": "pnpm@10.30.3",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ravl-io/base-ui-tailwind.git"
+  },
   "type": "module",
   "scripts": {
     "postinstall": "playwright install chromium",
