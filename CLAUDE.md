@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is `@ravl/base-ui-tailwind`, a **React 19** design system library built on **shadcn/ui** patterns using **Base UI** primitives (from `@base-ui/react`) and **Tailwind CSS v4**. It is a component library (not an app) — the entry point is `src/index.ts` which re-exports all components, hooks, and utilities.
+This is `@ravl-io/base-ui-tailwind`, a **React 19** design system library built on **shadcn/ui** patterns using **Base UI** primitives (from `@base-ui/react`) and **Tailwind CSS v4**. It is a component library (not an app) — the entry point is `src/index.ts` which re-exports all components, hooks, and utilities.
 
 **Every component must have:**
 1. A Storybook story file in `__stories__/` with visual stories (`tags: ["autodocs"]`)
