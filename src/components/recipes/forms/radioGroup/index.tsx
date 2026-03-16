@@ -3,7 +3,7 @@ import { RadioGroup as RadioGroupPrimitive, RadioGroupItem } from '@/components/
 import { cn } from '@/lib/utils/utils';
 import type { RadioGroupProps } from './types';
 
-export type { RadioGroupProps, RadioGroupClassNames, RadioOption } from './types';
+export type { RadioGroupProps, RadioGroupClasses, RadioOption } from './types';
 
 export const RadioGroup = ({
                              id,
@@ -11,7 +11,8 @@ export const RadioGroup = ({
                              options,
                              helperText,
                              error,
-                             classNames,
+                             className,
+                             classes,
                              ...props
                            }: RadioGroupProps) => {
   const helperId = `${id}-helper`;
@@ -22,30 +23,30 @@ export const RadioGroup = ({
     <FieldSet
       aria-invalid={!!error || undefined}
       aria-describedby={ariaDescribedBy || undefined}
-      className={cn(classNames?.root)}
+      className={cn(className)}
     >
-      <FieldLegend className={cn(classNames?.legend)}>
+      <FieldLegend className={cn(classes?.legend)}>
         {label}
       </FieldLegend>
 
       <RadioGroupPrimitive
         id={id}
         name={id}
-        className={cn(classNames?.group)}
+        className={cn(classes?.group)}
         {...props}
       >
         {options.map((option) => {
           const optionId = `${id}-${option.value}`;
           const labelId = `${id}-${option.value}-label`;
           return (
-            <div key={option.value} className={cn("flex items-center gap-2", classNames?.itemWrapper)}>
+            <div key={option.value} className={cn("flex items-center gap-2", classes?.itemWrapper)}>
               <RadioGroupItem
                 id={optionId}
                 value={option.value}
                 disabled={option.disabled}
                 aria-labelledby={labelId}
                 aria-invalid={!!error || undefined}
-                className={cn(classNames?.item)}
+                className={cn(classes?.item)}
               />
               <label
                 id={labelId}
@@ -53,7 +54,7 @@ export const RadioGroup = ({
                 className={cn(
                   "text-sm font-medium leading-snug",
                   option.disabled && "opacity-50 cursor-not-allowed",
-                  classNames?.itemLabel,
+                  classes?.itemLabel,
                 )}
               >
                 {option.label}
@@ -64,14 +65,14 @@ export const RadioGroup = ({
       </RadioGroupPrimitive>
 
       {helperText && (
-        <FieldDescription id={helperId} className={cn(classNames?.helperText)}>
+        <FieldDescription id={helperId} className={cn(classes?.helperText)}>
           {helperText}
         </FieldDescription>
       )}
       {error && (
         <FieldError
           id={errorId}
-          className={cn(classNames?.error)}
+          className={cn(classes?.error)}
           errors={typeof error === 'string' ? [{ message: error }] : undefined}
         >
           {typeof error !== 'string' ? error : undefined}

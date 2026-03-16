@@ -3,14 +3,15 @@ import { Checkbox as CheckboxPrimitive } from '@/components/ingredients/checkbox
 import { cn } from '@/lib/utils/utils';
 import type { CheckboxProps } from './types';
 
-export type { CheckboxProps, CheckboxClassNames } from './types';
+export type { CheckboxProps, CheckboxClasses } from './types';
 
 export const Checkbox = ({
                            id,
                            label,
                            helperText,
                            error,
-                           classNames,
+                           className,
+                           classes,
                            ...props
                          }: CheckboxProps) => {
   const labelId = `${id}-label`;
@@ -21,12 +22,12 @@ export const Checkbox = ({
   return (
     <Field
       data-invalid={!!error || undefined}
-      className={cn("gap-2", classNames?.root)}
+      className={cn("gap-2", className)}
     >
-      <div className={cn("flex flex-row items-center gap-2", classNames?.wrapper)}>
+      <div className={cn("flex flex-row items-center gap-2", classes?.wrapper)}>
         <FieldLabel
           id={labelId}
-          className={cn("flex items-center gap-2 cursor-pointer min-h-6", classNames?.label)}
+          className={cn("flex items-center gap-2 cursor-pointer min-h-6", classes?.label)}
         >
           {/* p-1 extends the click target to 24×24px to satisfy WCAG 2.5.8
               Visual box remains 16px (size-4) inside the primitive */}
@@ -34,7 +35,7 @@ export const Checkbox = ({
             aria-labelledby={labelId}
             aria-describedby={ariaDescribedBy || undefined}
             aria-invalid={!!error}
-            className={cn("p-1", classNames?.checkbox)}
+            className={cn("p-1", classes?.checkbox)}
             {...props}
           />
           {label}
@@ -42,14 +43,14 @@ export const Checkbox = ({
       </div>
 
       {helperText && (
-        <FieldDescription id={helperId} className={cn(classNames?.helperText)}>
+        <FieldDescription id={helperId} className={cn(classes?.helperText)}>
           {helperText}
         </FieldDescription>
       )}
       {error && (
         <FieldError
           id={errorId}
-          className={cn(classNames?.error)}
+          className={cn(classes?.error)}
           errors={typeof error === 'string' ? [{ message: error }] : undefined}
         >
           {typeof error !== 'string' ? error : undefined}

@@ -1,0 +1,54 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Getting Started/Usage" />
+
+# Usage
+
+## Prerequisites
+
+This library has the following **peer dependencies** that your project must provide:
+
+- `react` >= 19.0.0
+- `react-dom` >= 19.0.0
+- `tailwindcss` >= 4.0.0
+
+## Installing
+
+```bash
+pnpm add @ravl/base-ui-tailwind react react-dom tailwindcss
+```
+
+## CSS setup
+
+Import the design system stylesheet in your app's root CSS file. This provides all the design tokens, Tailwind theme mappings, and base styles:
+
+```css
+@import "tailwindcss";
+@import "@ravl/base-ui-tailwind/index.css";
+```
+
+This must come **before** any of your own custom styles so that your token overrides take precedence (see [Theming](?path=/docs/getting-started-theming--docs)).
+
+## Basic usage
+
+Import components directly and use them as React components:
+
+```tsx
+import { Button } from "@ravl/base-ui-tailwind";
+
+function App() {
+  return (
+    <Button variant="default" size="default" onClick={() => console.log("clicked")}>
+      Save changes
+    </Button>
+  );
+}
+```
+
+Components support standard props like `className` for one-off overrides:
+
+```tsx
+<Button className="w-full mt-4" variant="outline">
+  Full width button
+</Button>
+```

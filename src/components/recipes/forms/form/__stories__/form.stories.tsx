@@ -29,7 +29,7 @@ const meta = {
       control: "object",
       description: "Labels for form action buttons",
     },
-    classNames: {
+    classes: {
       control: "object",
       description: "Style overrides for individual slots within the form",
     },
@@ -501,11 +501,11 @@ export const ShouldExposeSubmittingStateToAT: Story = {
 };
 
 export const ShouldNotBreakA11yWithClassNameOverrides: Story = {
-  name: "should not break accessible structure with classNames overrides (WCAG 4.1.2)",
+  name: "should not break accessible structure with classes overrides (WCAG 4.1.2)",
   tags: ["!dev", "!autodocs"],
   args: {
-    classNames: {
-      root: "gap-6",
+    className: "gap-6",
+    classes: {
       actions: "flex-row-reverse",
     },
   },

@@ -36,7 +36,7 @@ const meta = {
       control: "text",
       description: "Error message displayed below the group",
     },
-    classNames: {
+    classes: {
       control: "object",
       description: "Style overrides for individual slots within the component",
     },
@@ -213,12 +213,12 @@ export const WithDisabledOption: Story = {
 };
 
 /**
- * Radio group with style overrides via classNames prop.
+ * Radio group with style overrides via classes prop.
  */
 export const WithClassNameOverrides: Story = {
   args: {
     helperText: "We will only use this to contact you about your account.",
-    classNames: {
+    classes: {
       legend: "text-blue-600",
       itemLabel: "text-blue-600",
       helperText: "text-blue-400",
@@ -233,7 +233,7 @@ export const WithClassNameOverrides: Story = {
     id="contact"
     label="Preferred contact method"
     helperText="We will only use this to contact you about your account."
-    classNames={{
+    classes={{
       legend: "text-blue-600",
       itemLabel: "text-blue-600",
       helperText: "text-blue-400",
@@ -467,11 +467,11 @@ export const ShouldDisableIndividualOption: Story = {
 };
 
 export const ShouldNotBreakA11yWithClassNameOverrides: Story = {
-  name: "should not break accessible name or structure with classNames overrides (WCAG 4.1.2)",
+  name: "should not break accessible name or structure with classes overrides (WCAG 4.1.2)",
   tags: ["!dev", "!autodocs"],
   args: {
     helperText: "We will only use this to contact you about your account.",
-    classNames: {
+    classes: {
       legend: "text-blue-600",
       itemLabel: "text-blue-600",
       helperText: "text-blue-400",

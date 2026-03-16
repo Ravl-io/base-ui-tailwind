@@ -10,7 +10,9 @@ This is `@ravl/base-ui-tailwind`, a **React 19** design system library built on 
 1. A Storybook story file in `__stories__/` with visual stories (`tags: ["autodocs"]`)
 2. Interaction/accessibility test stories validating **WCAG AA 2.2** compliance (`tags: ["!dev", "!autodocs"]`)
 
-Unit tests (Jest/Vitest) are planned but not yet implemented — Storybook `play` function tests are the current testing strategy.
+**Testing strategy has two layers:**
+1. **Unit tests** (`*.test.ts`/`*.test.tsx`) — fast Node-based Vitest tests for logic, utilities, and component behavior. Run on CI.
+2. **Storybook interaction tests** — browser-based `play` function tests for WCAG AA 2.2 compliance and visual interaction testing.
 
 ## Commands
 
@@ -21,11 +23,13 @@ Unit tests (Jest/Vitest) are planned but not yet implemented — Storybook `play
 | Build Storybook | `pnpm build:storybook` |
 | Lint | `pnpm lint` |
 | Lint fix | `pnpm lint:fix` |
-| Run all tests | `pnpm test` |
-| Run single test file | `pnpm vitest run src/components/ingredients/button/__stories__/button.stories.tsx` |
-| Run tests matching name | `pnpm vitest run -t "should have button role"` |
+| Run unit tests | `pnpm test` |
+| Run unit tests (watch) | `pnpm test:watch` |
+| Run single unit test | `pnpm vitest run --project unit src/components/ingredients/button/__tests__/button.test.tsx` |
+| Run Storybook interaction tests | `pnpm test:ui` |
 
-Tests run via **Vitest** in a **Playwright Chromium** browser environment. Storybook story `play` functions are the test runner (via `@storybook/addon-vitest`).
+**Unit tests** run via Vitest in jsdom with `@testing-library/react` and `@testing-library/jest-dom`. Files: `src/**/*.test.{ts,tsx}`. Coverage via `@vitest/coverage-v8` with 80% thresholds (branches, functions, lines, statements). Use `fireEvent` from RTL — do **not** use `userEvent`.
+**Storybook tests** run via Vitest + Playwright Chromium browser. Storybook `play` functions are the test runner (via `@storybook/addon-vitest`).
 
 ## Architecture
 
@@ -68,6 +72,17 @@ Portal-based components (dialog, popover, tooltip, select, dropdown-menu) render
 ### Storybook A11y Addon
 
 The `@storybook/addon-a11y` is configured in `.storybook/preview.ts` to run axe-core checks against WCAG 2.0 A/AA, 2.1 A/AA, and 2.2 AA tags with color-contrast enabled.
+
+### Unit Testing Convention
+
+Unit tests are **function-only** — test the logic our components add, not the libraries we consume. No snapshot tests. **Every component must have at least one test file** with a basic render test. Components with custom logic should have tests achieving 80% coverage (branches, functions, lines, statements).
+
+- **Every component must have a test file** — at minimum a smoke test that renders the component. This ensures imports resolve and the component mounts without errors.
+- **Test our code**: conditional rendering (e.g., `showCloseButton`, `withHandle`), computed values (e.g., CSS variables from props), event handling (e.g., click prevention, keyboard handlers), context providers/consumers, ID generation, utility functions
+- **Don't test**: render order, prop-to-attribute passthrough with no logic (e.g., `data-variant={variant}`), CVA class generation, Base UI primitive roles/behavior, `data-slot` attribute presence, `className` forwarding, HTML element tag types (`tagName`), React prop forwarding, portal rendering, static JSX attributes, icon/SVG presence — these verify React or library behavior, not our logic
+- **Use `fireEvent`** from `@testing-library/react`, not `userEvent`
+- **File location**: `__tests__/` folder adjacent to component (e.g., `button/__tests__/button.test.tsx`)
+- **Structure**: `describe("ComponentName", () => { describe("behavior group", () => { it("should ...") }) })`
 
 ## Conventions
 

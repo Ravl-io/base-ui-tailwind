@@ -1,8 +1,7 @@
 import type { ReactNode } from 'react';
 import type { Checkbox as CheckboxPrimitive } from '@base-ui/react/checkbox';
 
-export interface CheckboxClassNames {
-  root?: string
+export interface CheckboxClasses {
   wrapper?: string
   checkbox?: string
   label?: string
@@ -15,5 +14,6 @@ export interface CheckboxProps extends CheckboxPrimitive.Root.Props {
   label: string | ReactNode
   helperText?: string | ReactNode
   error?: string | ReactNode
-  classNames?: CheckboxClassNames
+  className?: string
+  classes?: CheckboxClasses
 }

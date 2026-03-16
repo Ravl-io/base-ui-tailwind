@@ -1,0 +1,65 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Getting Started/Theming" />
+
+# Theming
+
+All components are styled through **CSS custom properties** mapped to Tailwind's color system. Downstream consumers can fully re-theme the library by overriding these tokens — no need to modify component source code.
+
+## How it works
+
+The design system defines semantic tokens (e.g., `--primary`, `--destructive`, `--border`) using the **OKLCh** color space, then maps them to Tailwind via a `@theme inline` block. Components reference Tailwind classes like `bg-primary` or `text-muted-foreground`, which resolve to your custom property values at runtime.
+
+## Customizing the theme
+
+In your application's CSS, override the tokens on `:root` (and `.dark` for dark mode):
+
+```css
+@import "@ravl/base-ui-tailwind/index.css";
+
+:root {
+  /* Brand colors */
+  --primary: oklch(0.55 0.2 250);
+  --primary-foreground: oklch(0.98 0 0);
+
+  /* Accent */
+  --accent: oklch(0.85 0.1 150);
+  --accent-foreground: oklch(0.2 0 0);
+
+  /* Destructive */
+  --destructive: oklch(0.6 0.25 25);
+
+  /* Border radius */
+  --radius: 0.5rem;
+}
+
+.dark {
+  --primary: oklch(0.75 0.15 250);
+  --primary-foreground: oklch(0.15 0 0);
+  /* ... */
+}
+```
+
+## Available tokens
+
+- `--background` / `--foreground` — Page background and default text
+- `--primary` / `--primary-foreground` — Primary actions (buttons, links)
+- `--secondary` / `--secondary-foreground` — Secondary actions
+- `--muted` / `--muted-foreground` — Subdued backgrounds and text
+- `--accent` / `--accent-foreground` — Highlights and hover states
+- `--destructive` — Destructive/error actions
+- `--border` — Default border color
+- `--input` — Input border color
+- `--ring` — Focus ring color
+- `--card` / `--card-foreground` — Card surfaces
+- `--popover` / `--popover-foreground` — Popover/dropdown surfaces
+- `--chart-1` through `--chart-5` — Chart/data visualization palette
+- `--sidebar-*` — Sidebar-specific overrides
+- `--radius` — Base border radius (sm, md, lg, xl derived from this)
+
+## Tips
+
+- **OKLCh** is a perceptually uniform color space — adjusting lightness gives consistent results across hues. Use `oklch(lightness chroma hue)`.
+- The `--radius` token is a base value. All radius scales (`--radius-sm` through `--radius-4xl`) are computed from it, so changing one value updates the entire system.
+- Components use Tailwind classes like `bg-primary`, `text-muted-foreground`, `border-border` — these automatically resolve to your token overrides with zero config.
+- Dark mode is activated by adding the `dark` class to a parent element. All tokens have dark-mode variants.

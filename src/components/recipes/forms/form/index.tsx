@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils/utils';
 import { getLabel } from '@/lib/utils/getLabel';
 import type { FormProps } from './types';
 
-export type { FormProps, FormClassNames, FormLabels } from './types';
+export type { FormProps, FormClasses, FormLabels } from './types';
 
 const focusFirstError = (form: HTMLFormElement) => {
   const firstError = form.querySelector<HTMLElement>('[aria-invalid="true"]');
@@ -20,7 +20,7 @@ export const Form = ({
                        error,
                        isSubmitting = false,
                        labels,
-                       classNames,
+                       classes,
                        children,
                        className,
                        ...props
@@ -41,13 +41,13 @@ export const Form = ({
       aria-label={name}
       noValidate
       onSubmit={handleSubmit}
-      className={cn("flex flex-col gap-5", classNames?.root, className)}
+      className={cn("flex flex-col gap-5", className)}
       {...props}
     >
       {children}
 
       <div
-        className={cn("flex gap-5", classNames?.actions)}
+        className={cn("flex gap-5", classes?.actions)}
       >
         {onCancel && (
           <Button
@@ -55,7 +55,7 @@ export const Form = ({
             variant="outline"
             disabled={isSubmitting}
             onClick={onCancel}
-            className={cn(classNames?.cancelButton)}
+            className={cn(classes?.cancelButton)}
           >
             {getLabel(labels.cancel, "labels.cancel")}
           </Button>
@@ -67,7 +67,7 @@ export const Form = ({
             variant="outline"
             disabled={isSubmitting}
             onClick={onReset}
-            className={cn(classNames?.resetButton)}
+            className={cn(classes?.resetButton)}
           >
             {getLabel(labels.reset, "labels.reset")}
           </Button>
@@ -77,7 +77,7 @@ export const Form = ({
           type="submit"
           isLoading={isSubmitting}
           label={{ loading: "labels.submit.loading" }}
-          className={cn(classNames?.submitButton)}
+          className={cn(classes?.submitButton)}
         >
           {getLabel(labels.submit, "labels.submit")}
         </Button>
@@ -87,7 +87,7 @@ export const Form = ({
         <div
           role="alert"
           aria-live="assertive"
-          className={cn(classNames?.error)}
+          className={cn(classes?.error)}
         >
           {error}
         </div>

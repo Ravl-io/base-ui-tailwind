@@ -7,8 +7,7 @@ export interface SelectOption {
   disabled?: boolean
 }
 
-export interface SelectClassNames {
-  root?: string
+export interface SelectClasses {
   label?: string
   trigger?: string
   content?: string
@@ -24,5 +23,6 @@ export interface SelectProps extends SelectPrimitive.Root.Props<string> {
   placeholder?: string
   helperText?: string | ReactNode
   error?: string | ReactNode
-  classNames?: SelectClassNames
+  className?: string
+  classes?: SelectClasses
 }
