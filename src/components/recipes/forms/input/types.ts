@@ -1,7 +1,6 @@
 import React from 'react';
 
-export interface InputClassNames {
-  root?: string;
+export interface InputClasses {
   label?: string;
   input?: string;
   helperText?: string;
@@ -13,5 +12,5 @@ export interface InputProps extends Omit<React.ComponentProps<'input'>, 'id'> {
   label: string;
   helperText?: string | React.ReactNode;
   error?: string | React.ReactNode;
-  classNames?: InputClassNames;
+  classes?: InputClasses;
 }

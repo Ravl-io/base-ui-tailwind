@@ -29,23 +29,56 @@ export default defineConfig({
     },
   },
   test: {
-    projects: [{
-      extends: true,
-      plugins: [
-        storybookTest({
-          configDir: path.join(dirname, '.storybook'), // ← was dirname already, fine
-        }),
+    coverage: {
+      provider: 'v8',
+      include: ['src/**/*.{ts,tsx}'],
+      exclude: [
+        'src/**/__tests__/**',
+        'src/**/__stories__/**',
+        'src/**/*.test.{ts,tsx}',
+        'src/**/*.stories.{ts,tsx}',
+        'src/**/*.d.ts',
+        'src/**/*.mdx',
+        'src/**/types.ts',
+        'src/**/index.css',
+        'src/**/index.ts',
       ],
-      test: {
-        name: 'storybook',
-        browser: {
-          enabled: true,
-          headless: true,
-          provider: playwright({}),
-          instances: [{ browser: 'chromium' }],
-        },
-        setupFiles: ['.storybook/vitest.setup.ts'],
+      thresholds: {
+        branches: 80,
+        functions: 80,
+        lines: 80,
+        statements: 80,
       },
-    }],
+    },
+    projects: [
+      {
+        extends: true,
+        test: {
+          name: 'unit',
+          environment: 'jsdom',
+          include: ['src/**/__tests__/**/*.test.{ts,tsx}'],
+          exclude: ['node_modules', 'dist'],
+          setupFiles: ['./vitest.setup.ts', './vitest.coverage.ts'],
+        },
+      },
+      {
+        extends: true,
+        plugins: [
+          storybookTest({
+            configDir: path.join(dirname, '.storybook'),
+          }),
+        ],
+        test: {
+          name: 'storybook',
+          browser: {
+            enabled: true,
+            headless: true,
+            provider: playwright({}),
+            instances: [{ browser: 'chromium' }],
+          },
+          setupFiles: ['.storybook/vitest.setup.ts'],
+        },
+      },
+    ],
   },
 });

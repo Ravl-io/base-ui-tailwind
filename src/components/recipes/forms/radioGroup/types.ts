@@ -7,8 +7,7 @@ export interface RadioOption {
   disabled?: boolean
 }
 
-export interface RadioGroupClassNames {
-  root?: string
+export interface RadioGroupClasses {
   legend?: string
   group?: string
   itemWrapper?: string
@@ -24,5 +23,6 @@ export interface RadioGroupProps extends RadioGroupPrimitive.Props {
   options: RadioOption[]
   helperText?: string | ReactNode
   error?: string | ReactNode
-  classNames?: RadioGroupClassNames
+  className?: string
+  classes?: RadioGroupClasses
 }

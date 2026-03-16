@@ -53,7 +53,7 @@ const meta = {
       control: "boolean",
       description: "Sets the checkbox to an indeterminate state",
     },
-    classNames: {
+    classes: {
       control: "object",
       description: "Style overrides for individual slots within the component",
     },
@@ -351,12 +351,12 @@ export const Indeterminate: Story = {
 };
 
 /**
- * Checkbox with style overrides via classNames prop.
+ * Checkbox with style overrides via classes prop.
  */
 export const WithClassNameOverrides: Story = {
   args: {
     helperText: "You must agree to continue.",
-    classNames: {
+    classes: {
       label: "text-blue-600",
       helperText: "text-blue-400",
     },
@@ -370,7 +370,7 @@ export const WithClassNameOverrides: Story = {
     id="terms"
     label="I agree to the terms and conditions"
     helperText="You must agree to continue."
-    classNames={{
+    classes={{
       label: "text-blue-600",
       helperText: "text-blue-400",
     }}
@@ -383,7 +383,7 @@ export const WithClassNameOverrides: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    // classNames slots reach the correct elements
+    // classes slots reach the correct elements
     const labelEl = canvasElement.querySelector('label[id="terms-label"]');
     const helperText = canvas.getByText("You must agree to continue.");
     await expect(labelEl).toHaveClass("text-blue-600");

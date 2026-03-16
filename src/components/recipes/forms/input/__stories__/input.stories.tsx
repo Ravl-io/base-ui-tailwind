@@ -35,7 +35,7 @@ const meta = {
     placeholder: {
       control: "text",
     },
-    classNames: {
+    classes: {
       control: "object",
       description: "Style overrides for individual slots within the component",
     },
@@ -194,12 +194,12 @@ export const Disabled: Story = {
 };
 
 /**
- * Demonstrates style overrides via classNames prop.
+ * Demonstrates style overrides via classes prop.
  */
 export const WithClassNameOverrides: Story = {
   args: {
     helperText: "Your unique account identifier.",
-    classNames: {
+    classes: {
       label: "text-blue-600",
       input: "border-blue-400",
       helperText: "text-blue-400",
@@ -215,7 +215,7 @@ export const WithClassNameOverrides: Story = {
     label="Username"
     placeholder="johndoe"
     helperText="Your unique account identifier."
-    classNames={{
+    classes={{
       label: "text-blue-600",
       input: "border-blue-400",
       helperText: "text-blue-400",
@@ -422,11 +422,11 @@ export const ShouldBeDisabledAndNotFocusable: Story = {
 };
 
 export const ShouldNotBreakA11yWithClassNameOverrides: Story = {
-  name: "should not break accessible name or structure with classNames overrides (WCAG 4.1.2)",
+  name: "should not break accessible name or structure with classes overrides (WCAG 4.1.2)",
   tags: ["!dev", "!autodocs"],
   args: {
     helperText: "Your unique account identifier.",
-    classNames: {
+    classes: {
       label: "text-blue-600",
       input: "border-blue-400",
       helperText: "text-blue-400",

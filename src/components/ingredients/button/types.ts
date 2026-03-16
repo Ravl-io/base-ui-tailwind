@@ -2,8 +2,7 @@ import type { VariantProps } from "class-variance-authority";
 import type { Button as ButtonPrimitive } from "@base-ui/react/button";
 import type { buttonVariants } from "./variants";
 
-export interface ButtonClassNames {
-  root?: string
+export interface ButtonClasses {
   content?: string
   spinner?: string
   srOnly?: string
@@ -18,5 +17,5 @@ export interface ButtonProps
     VariantProps<typeof buttonVariants> {
   isLoading?: boolean
   label?: ButtonLabel
-  classNames?: ButtonClassNames
+  classes?: ButtonClasses
 }

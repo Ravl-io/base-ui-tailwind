@@ -6,8 +6,7 @@ export interface FormLabels {
   reset?: string
 }
 
-export interface FormClassNames {
-  root?: string
+export interface FormClasses {
   actions?: string
   cancelButton?: string
   resetButton?: string
@@ -23,6 +22,6 @@ export interface FormProps extends Omit<HTMLAttributes<HTMLFormElement>, 'onSubm
   error?: string | ReactNode
   isSubmitting?: boolean
   labels: FormLabels
-  classNames?: FormClassNames
+  classes?: FormClasses
   children: ReactNode
 }

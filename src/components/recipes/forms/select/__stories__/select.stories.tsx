@@ -41,7 +41,7 @@ const meta = {
       control: "text",
       description: "Error message displayed below the select",
     },
-    classNames: {
+    classes: {
       control: "object",
       description: "Style overrides for individual slots within the component",
     },
@@ -230,11 +230,11 @@ export const WithDisabledOption: Story = {
 };
 
 /**
- * Select with style overrides via classNames prop.
+ * Select with style overrides via classes prop.
  */
 export const WithClassNameOverrides: Story = {
   args: {
-    classNames: {
+    classes: {
       label: "text-blue-600",
       trigger: "border-blue-400",
       helperText: "text-blue-400",
@@ -251,7 +251,7 @@ export const WithClassNameOverrides: Story = {
     label="Role"
     placeholder="Select a role"
     helperText="Choose the role that best describes your position."
-    classNames={{
+    classes={{
       label: "text-blue-600",
       trigger: "border-blue-400",
       helperText: "text-blue-400",
@@ -515,11 +515,11 @@ export const ShouldExposeDisabledOption: Story = {
 };
 
 export const ShouldNotBreakA11yWithClassNameOverrides: Story = {
-  name: "should not break accessible name or structure with classNames overrides (WCAG 4.1.2)",
+  name: "should not break accessible name or structure with classes overrides (WCAG 4.1.2)",
   tags: ["!dev", "!autodocs"],
   args: {
     helperText: "Choose the role that best describes your position.",
-    classNames: {
+    classes: {
       label: "text-blue-600",
       trigger: "border-blue-400",
       helperText: "text-blue-400",

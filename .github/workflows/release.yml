@@ -1,0 +1,51 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - run: pnpm install
+
+      - name: Check for changesets
+        id: changesets
+        run: |
+          if ls .changeset/*.md 1>/dev/null 2>&1 && [ "$(ls .changeset/*.md | wc -l)" -gt 0 ]; then
+            echo "has_changesets=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_changesets=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Version and publish
+        if: steps.changesets.outputs.has_changesets == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          pnpm version
+          git add .
+          git commit -m "chore: version bump"
+          git push
+          pnpm release
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

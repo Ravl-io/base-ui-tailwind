@@ -1,0 +1,94 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Getting Started/Styling" />
+
+# Styling with `classes`
+
+Many components expose a `classes` prop — a typed object that lets you target **specific internal slots** of a component with Tailwind classes. This gives you fine-grained control without needing to reach for global CSS or `!important`.
+
+Each slot maps to a specific DOM element inside the component. Classes are merged using `tailwind-merge`, so your overrides win over defaults.
+
+## Button example
+
+The Button exposes three slots — `content`, `spinner`, and `srOnly`:
+
+```tsx
+<Button
+  isLoading
+  label={{ loading: "Saving…" }}
+  className="rounded-full px-8"
+  classes={{
+    content: "font-bold tracking-wide",
+    spinner: "text-white",
+    srOnly: "sr-only",
+  }}
+>
+  Save
+</Button>
+```
+
+## Form Input example
+
+Recipe components like `Form.Input` expose slots for every part of the form field — `label`, `input`, `helperText`, and `error`:
+
+```tsx
+<Form.Input
+  id="email"
+  label="Email address"
+  helperText="We'll never share your email."
+  className="max-w-sm"
+  classes={{
+    label: "text-xs uppercase tracking-wider",
+    input: "bg-muted/50 border-0",
+    helperText: "text-muted-foreground/70",
+    error: "font-semibold",
+  }}
+/>
+```
+
+## Form Select example
+
+`Form.Select` adds `trigger`, `content`, and `item` slots for the dropdown parts:
+
+```tsx
+<Form.Select
+  id="role"
+  label="Role"
+  options={[
+    { label: "Admin", value: "admin" },
+    { label: "Editor", value: "editor" },
+  ]}
+  classes={{
+    trigger: "bg-muted border-0",
+    content: "shadow-xl",
+    item: "text-sm",
+  }}
+/>
+```
+
+## Form RadioGroup example
+
+`Form.RadioGroup` gives you control over the group layout with `group`, `itemWrapper`, `item`, and `itemLabel`:
+
+```tsx
+<Form.RadioGroup
+  id="plan"
+  label="Select a plan"
+  options={[
+    { label: "Free", value: "free" },
+    { label: "Pro", value: "pro" },
+  ]}
+  classes={{
+    group: "flex-row gap-6",
+    itemWrapper: "border rounded-lg p-4",
+    itemLabel: "font-medium",
+  }}
+/>
+```
+
+## `classes` vs `className`
+
+- **`className`** — A single string applied to the outermost element. Good for spacing, width, or margin overrides.
+- **`classes`** — A typed object targeting internal slots (no `root` key — use `className` for the root element). Use this when you need to style a specific part of a component (the label, the trigger, the error message, etc.).
+
+Both can be used together. `className` handles the root element; `classes` handles everything inside it.
