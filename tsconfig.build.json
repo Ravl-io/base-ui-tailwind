@@ -5,5 +5,5 @@
     "types": ["vite/client"]
   },
   "include": ["src"],
-  "exclude": ["node_modules", "**/*.stories.tsx", "**/*.stories.ts", "**/__stories__/**"]
+  "exclude": ["node_modules", "**/*.stories.tsx", "**/*.stories.ts", "**/__stories__/**", "**/__tests__/**", "**/*.test.ts", "**/*.test.tsx"]
 }

@@ -41,6 +41,7 @@ export default defineConfig({
         'src/**/*.mdx',
         'src/**/types.ts',
         'src/**/index.css',
+        'src/**/index.ts',
       ],
       thresholds: {
         branches: 80,
