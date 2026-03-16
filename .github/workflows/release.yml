@@ -31,7 +31,8 @@ jobs:
       - name: Check for changesets
         id: changesets
         run: |
-          if ls .changeset/*.md 1>/dev/null 2>&1 && [ "$(ls .changeset/*.md | wc -l)" -gt 0 ]; then
+          count=$(find .changeset -name '*.md' ! -name 'README.md' | wc -l)
+          if [ "$count" -gt 0 ]; then
             echo "has_changesets=true" >> "$GITHUB_OUTPUT"
           else
             echo "has_changesets=false" >> "$GITHUB_OUTPUT"
@@ -42,10 +43,10 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          pnpm version
+          pnpm run version
           git add .
           git commit -m "chore: version bump"
           git push
-          pnpm release
+          pnpm run release
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
