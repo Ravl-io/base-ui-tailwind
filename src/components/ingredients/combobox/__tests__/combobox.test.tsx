@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
 import {
   Combobox,
@@ -50,7 +50,7 @@ describe("ComboboxChip", () => {
       render(
         <Combobox>
           <ComboboxChips>
-            <ComboboxChip value="a">Apple</ComboboxChip>
+            <ComboboxChip>Apple</ComboboxChip>
           </ComboboxChips>
         </Combobox>,
       );
@@ -62,7 +62,7 @@ describe("ComboboxChip", () => {
       render(
         <Combobox>
           <ComboboxChips>
-            <ComboboxChip value="a" showRemove={false}>Apple</ComboboxChip>
+            <ComboboxChip showRemove={false}>Apple</ComboboxChip>
           </ComboboxChips>
         </Combobox>,
       );

@@ -5,10 +5,6 @@ import {
   DialogContent,
   DialogHeader,
   DialogFooter,
-  DialogTitle,
-  DialogDescription,
-  DialogTrigger,
-  DialogClose,
 } from "../index";
 
 describe("Dialog", () => {

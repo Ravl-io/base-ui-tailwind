@@ -18,7 +18,8 @@ describe("cn", () => {
 
   describe("conditional classes", () => {
     it("should ignore falsy values", () => {
-      expect(cn("foo", false && "bar", "baz")).toBe("foo baz");
+      const condition = false;
+      expect(cn("foo", condition && "bar", "baz")).toBe("foo baz");
     });
 
     it("should ignore undefined values", () => {

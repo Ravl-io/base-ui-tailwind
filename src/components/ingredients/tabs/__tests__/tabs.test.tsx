@@ -1,19 +1,19 @@
+import { forwardRef, type Ref, type ReactNode } from "react";
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 
 vi.mock("@base-ui/react/tabs", () => {
-  const React = require("react");
-  const Root = React.forwardRef(({ children, className, ...props }: Record<string, unknown>, ref: React.Ref<HTMLDivElement>) => (
-    <div ref={ref} className={className as string} {...props}>{children as React.ReactNode}</div>
+  const Root = forwardRef(({ children, className, ...props }: Record<string, unknown>, ref: Ref<HTMLDivElement>) => (
+    <div ref={ref} className={className as string} {...props}>{children as ReactNode}</div>
   ));
-  const List = React.forwardRef(({ children, className, ...props }: Record<string, unknown>, ref: React.Ref<HTMLDivElement>) => (
-    <div ref={ref} role="tablist" className={className as string} {...props}>{children as React.ReactNode}</div>
+  const List = forwardRef(({ children, className, ...props }: Record<string, unknown>, ref: Ref<HTMLDivElement>) => (
+    <div ref={ref} role="tablist" className={className as string} {...props}>{children as ReactNode}</div>
   ));
-  const Tab = React.forwardRef(({ children, className, ...props }: Record<string, unknown>, ref: React.Ref<HTMLButtonElement>) => (
-    <button ref={ref} role="tab" className={className as string} {...props}>{children as React.ReactNode}</button>
+  const Tab = forwardRef(({ children, className, ...props }: Record<string, unknown>, ref: Ref<HTMLButtonElement>) => (
+    <button ref={ref} role="tab" className={className as string} {...props}>{children as ReactNode}</button>
   ));
-  const Panel = React.forwardRef(({ children, className, ...props }: Record<string, unknown>, ref: React.Ref<HTMLDivElement>) => (
-    <div ref={ref} role="tabpanel" className={className as string} {...props}>{children as React.ReactNode}</div>
+  const Panel = forwardRef(({ children, className, ...props }: Record<string, unknown>, ref: Ref<HTMLDivElement>) => (
+    <div ref={ref} role="tabpanel" className={className as string} {...props}>{children as ReactNode}</div>
   ));
   return { Tabs: { Root, List, Tab, Panel } };
 });
