@@ -6,6 +6,9 @@
     "type": "git",
     "url": "https://github.com/Ravl-io/base-ui-tailwind.git"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "type": "module",
   "scripts": {
     "postinstall": "playwright install chromium",
