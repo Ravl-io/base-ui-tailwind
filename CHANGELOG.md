@@ -1,5 +1,11 @@
 # @ravl/base-ui-tailwind
 
+## 0.3.0
+
+### Minor Changes
+
+- 95b7b2b: change CI build to use different node version
+
 ## 0.2.2
 
 ### Patch Changes
