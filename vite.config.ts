@@ -56,6 +56,7 @@ export default defineConfig({
         test: {
           name: 'unit',
           environment: 'jsdom',
+          pool: 'threads',
           include: ['src/**/__tests__/**/*.test.{ts,tsx}'],
           exclude: ['node_modules', 'dist'],
           setupFiles: ['./vitest.setup.ts', './vitest.coverage.ts'],
