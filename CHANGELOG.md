@@ -1,5 +1,11 @@
 # @ravl/base-ui-tailwind
 
+## 0.2.2
+
+### Patch Changes
+
+- 53e5cd4: adjust workflow to generate a tag and releases
+
 ## 0.2.1
 
 ### Patch Changes
