@@ -19,6 +19,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "vitest run --project unit --coverage",
+    "test:changed": "vitest run --project unit --changed",
     "test:watch": "vitest --project unit",
     "test:ui": "vitest run --project storybook",
     "change": "changeset",
