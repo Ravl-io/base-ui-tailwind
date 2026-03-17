@@ -20,6 +20,31 @@ pnpm add @ravl-io/base-ui-tailwind
 - `react-dom` >= 19
 - `tailwindcss` >= 4
 
+## Usage
+
+```tsx
+// Import components
+import { Button, Dialog } from "@ravl-io/base-ui-tailwind";
+
+// Import styles (required — add to your app's entry point)
+import "@ravl-io/base-ui-tailwind/styles";
+```
+
+### Form Recipes
+
+Form recipes are composite components accessed via the `Form` namespace:
+
+```tsx
+import { Form } from "@ravl-io/base-ui-tailwind";
+
+<Form name="signup" onSubmit={handleSubmit}>
+  <Form.Input name="email" label="Email" type="email" required />
+  <Form.Select name="role" label="Role" options={roles} />
+  <Form.Checkbox name="terms" label="I agree to the terms" />
+  <Form.RadioGroup name="plan" label="Plan" options={plans} />
+</Form>
+```
+
 ## Architecture
 
 Components follow an **Ingredient/Recipe** pattern:
