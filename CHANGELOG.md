@@ -1,5 +1,11 @@
 # @ravl/base-ui-tailwind
 
+## 1.0.0
+
+### Major Changes
+
+- defad37: Update the build export system
+
 ## 0.3.0
 
 ### Minor Changes
