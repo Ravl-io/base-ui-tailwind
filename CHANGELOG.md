@@ -1,5 +1,11 @@
 # @ravl/base-ui-tailwind
 
+## 1.1.0
+
+### Minor Changes
+
+- 92bf951: fix to the utils design system export
+
 ## 1.0.0
 
 ### Major Changes
