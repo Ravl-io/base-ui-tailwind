@@ -20,6 +20,31 @@ pnpm add @ravl-io/base-ui-tailwind
 - `react-dom` >= 19
 - `tailwindcss` >= 4
 
+## Usage
+
+```tsx
+// Import components
+import { Button, Dialog } from "@ravl-io/base-ui-tailwind";
+
+// Import styles (required — add to your app's entry point)
+import "@ravl-io/base-ui-tailwind/styles";
+```
+
+### Form Recipes
+
+Form recipes are composite components accessed via the `Form` namespace:
+
+```tsx
+import { Form } from "@ravl-io/base-ui-tailwind";
+
+<Form name="signup" onSubmit={handleSubmit}>
+  <Form.Input name="email" label="Email" type="email" required />
+  <Form.Select name="role" label="Role" options={roles} />
+  <Form.Checkbox name="terms" label="I agree to the terms" />
+  <Form.RadioGroup name="plan" label="Plan" options={plans} />
+</Form>
+```
+
 ## Architecture
 
 Components follow an **Ingredient/Recipe** pattern:
@@ -29,11 +54,69 @@ Components follow an **Ingredient/Recipe** pattern:
 
 ### Components
 
-Accordion, Alert, Alert Dialog, Aspect Ratio, Avatar, Badge, Breadcrumb, Button, Button Group, Calendar, Card, Carousel, Chart, Checkbox, Collapsible, Combobox, Command, Context Menu, Dialog, Drawer, Dropdown Menu, Empty, Field, Hover Card, Input, Input Group, Input OTP, Item, Kbd, Label, Menubar, Native Select, Navigation Menu, Pagination, Popover, Progress, Radio Group, Resizable, Scroll Area, Select, Separator, Sheet, Sidebar, Skeleton, Slider, Sonner, Spinner, Switch, Table, Tabs, Textarea, Toggle, Toggle Group, Tooltip
+- Accordion
+- Alert
+- Alert Dialog
+- Aspect Ratio
+- Avatar
+- Badge
+- Breadcrumb
+- Button
+- Button Group
+- Calendar
+- Card
+- Carousel
+- Chart
+- Checkbox
+- Collapsible
+- Combobox
+- Command
+- Context Menu
+- Dialog
+- Drawer
+- Dropdown Menu
+- Empty
+- Field
+- Hover Card
+- Input
+- Input Group
+- Input OTP
+- Item
+- Kbd
+- Label
+- Menubar
+- Native Select
+- Navigation Menu
+- Pagination
+- Popover
+- Progress
+- Radio Group
+- Resizable
+- Scroll Area
+- Select
+- Separator
+- Sheet
+- Sidebar
+- Skeleton
+- Slider
+- Sonner
+- Spinner
+- Switch
+- Table
+- Tabs
+- Textarea
+- Toggle
+- Toggle Group
+- Tooltip
 
 ### Form Recipes
 
-`Form.Input`, `Form.Select`, `Form.Checkbox`, `Form.RadioGroup` — composite form components with built-in label, helper text, and error handling.
+- `Form.Input`
+- `Form.Select`
+- `Form.Checkbox`
+- `Form.RadioGroup`
+
+Composite form components with built-in label, helper text, and error handling.
 
 ## Development
 
