@@ -2,7 +2,12 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.build.tsbuildinfo",
-    "types": ["vite/client"]
+    "types": ["vite/client"],
+    "noEmit": false,
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": true,
+    "outDir": "dist"
   },
   "include": ["src"],
   "exclude": ["node_modules", "**/*.stories.tsx", "**/*.stories.ts", "**/__stories__/**", "**/__tests__/**", "**/*.test.ts", "**/*.test.tsx"]

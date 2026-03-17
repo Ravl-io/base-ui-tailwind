@@ -10,11 +10,26 @@
     "registry": "https://npm.pkg.github.com"
   },
   "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./styles": "./dist/index.css"
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "postinstall": "[ -z \"$CI\" ] && playwright install chromium || true",
     "clear": "rimraf dist storybook-static",
     "dev": "storybook dev -p 6006",
-    "build": "pnpm clear && tsc -p tsconfig.build.json && vite build",
+    "build": "pnpm clear && vite build && tsc -p tsconfig.build.json",
     "build:storybook": "pnpm clear && storybook build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",

@@ -29,11 +29,69 @@ Components follow an **Ingredient/Recipe** pattern:
 
 ### Components
 
-Accordion, Alert, Alert Dialog, Aspect Ratio, Avatar, Badge, Breadcrumb, Button, Button Group, Calendar, Card, Carousel, Chart, Checkbox, Collapsible, Combobox, Command, Context Menu, Dialog, Drawer, Dropdown Menu, Empty, Field, Hover Card, Input, Input Group, Input OTP, Item, Kbd, Label, Menubar, Native Select, Navigation Menu, Pagination, Popover, Progress, Radio Group, Resizable, Scroll Area, Select, Separator, Sheet, Sidebar, Skeleton, Slider, Sonner, Spinner, Switch, Table, Tabs, Textarea, Toggle, Toggle Group, Tooltip
+- Accordion
+- Alert
+- Alert Dialog
+- Aspect Ratio
+- Avatar
+- Badge
+- Breadcrumb
+- Button
+- Button Group
+- Calendar
+- Card
+- Carousel
+- Chart
+- Checkbox
+- Collapsible
+- Combobox
+- Command
+- Context Menu
+- Dialog
+- Drawer
+- Dropdown Menu
+- Empty
+- Field
+- Hover Card
+- Input
+- Input Group
+- Input OTP
+- Item
+- Kbd
+- Label
+- Menubar
+- Native Select
+- Navigation Menu
+- Pagination
+- Popover
+- Progress
+- Radio Group
+- Resizable
+- Scroll Area
+- Select
+- Separator
+- Sheet
+- Sidebar
+- Skeleton
+- Slider
+- Sonner
+- Spinner
+- Switch
+- Table
+- Tabs
+- Textarea
+- Toggle
+- Toggle Group
+- Tooltip
 
 ### Form Recipes
 
-`Form.Input`, `Form.Select`, `Form.Checkbox`, `Form.RadioGroup` — composite form components with built-in label, helper text, and error handling.
+- `Form.Input`
+- `Form.Select`
+- `Form.Checkbox`
+- `Form.RadioGroup`
+
+Composite form components with built-in label, helper text, and error handling.
 
 ## Development
 
