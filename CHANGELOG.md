@@ -1,5 +1,11 @@
 # @ravl/base-ui-tailwind
 
+## 1.2.0
+
+### Minor Changes
+
+- a6c60b6: move tailwind to dep only
+
 ## 1.1.0
 
 ### Minor Changes
