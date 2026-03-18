@@ -1,5 +1,11 @@
 # @ravl/base-ui-tailwind
 
+## 1.2.1
+
+### Patch Changes
+
+- bbbe62d: update the license
+
 ## 1.2.0
 
 ### Minor Changes
