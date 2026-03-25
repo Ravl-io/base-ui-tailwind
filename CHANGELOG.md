@@ -1,5 +1,11 @@
 # @ravl/base-ui-tailwind
 
+## 1.2.2
+
+### Patch Changes
+
+- 764e78b: enhance storybook controls
+
 ## 1.2.1
 
 ### Patch Changes
