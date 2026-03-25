@@ -44,7 +44,10 @@ const meta = {
   args: {
     id: "contact",
     label: "Preferred contact method",
+    helperText: "",
+    error: "",
     options,
+    classes: {},
   },
   render: (args) => <RadioGroup {...args} />,
 } satisfies Meta<Omit<RadioGroupProps, "children">>;

@@ -13,7 +13,24 @@ const meta = {
   title: "ingredients/Switch",
   component: Switch,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    size: {
+      control: "select",
+      options: ["default", "sm"],
+    },
+    disabled: {
+      control: "boolean",
+    },
+    defaultChecked: {
+      control: "boolean",
+      description: "Initial checked state (uncontrolled).",
+    },
+  },
+  args: {
+    size: "default",
+    disabled: false,
+    defaultChecked: false,
+  },
   parameters: {
     layout: "centered",
   },

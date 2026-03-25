@@ -15,7 +15,15 @@ const meta = {
   title: "ingredients/Avatar",
   component: Avatar,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    size: {
+      control: "select",
+      options: ["default", "sm", "lg"],
+    },
+  },
+  args: {
+    size: "default",
+  },
   render: (args) => (
     <Avatar {...args}>
       <AvatarImage src="https://github.com/shadcn.png" />

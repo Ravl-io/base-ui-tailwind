@@ -41,6 +41,10 @@ const meta = {
       control: "text",
       description: "Error message displayed below the select",
     },
+    options: {
+      control: "object",
+      description: "Array of { value, label, disabled? } objects to populate the select",
+    },
     classes: {
       control: "object",
       description: "Style overrides for individual slots within the component",
@@ -50,7 +54,10 @@ const meta = {
     id: "role",
     label: "Role",
     placeholder: "Select a role",
+    helperText: "",
+    error: "",
     options,
+    classes: {},
   },
   render: (args) => <Select {...args} />,
 } satisfies Meta<Omit<SelectProps, "children">>;

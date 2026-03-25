@@ -18,8 +18,15 @@ const meta = {
   title: "ingredients/Breadcrumb",
   component: Breadcrumb,
   tags: ["autodocs"],
-  argTypes: {},
-  args: {},
+  argTypes: {
+    "aria-label": {
+      control: "text",
+      description: "Accessible label for the breadcrumb navigation landmark",
+    },
+  },
+  args: {
+    "aria-label": "breadcrumb",
+  },
   render: (args) => (
     <Breadcrumb {...args}>
       <BreadcrumbList>

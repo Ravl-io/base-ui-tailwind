@@ -35,9 +35,15 @@ const meta = {
   title: "ingredients/Card",
   component: Card,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    size: {
+      control: "select",
+      options: ["default", "sm"],
+    },
+  },
   args: {
     className: "w-96",
+    size: "default",
   },
   parameters: {
     layout: "centered",

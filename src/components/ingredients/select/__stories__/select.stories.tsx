@@ -20,8 +20,17 @@ const meta: Meta<typeof Select> = {
   title: "ingredients/Select",
   component: Select,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    defaultValue: {
+      control: "text",
+      description: "The initial value of the select (uncontrolled)",
+    },
+    disabled: {
+      control: "boolean",
+    },
+  },
   args: {
+    disabled: false,
     onValueChange: fn(),
   },
   render: (args) => (

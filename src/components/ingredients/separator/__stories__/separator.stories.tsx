@@ -10,7 +10,15 @@ const meta = {
   title: "ingredients/Separator",
   component: Separator,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    orientation: {
+      control: "select",
+      options: ["horizontal", "vertical"],
+    },
+  },
+  args: {
+    orientation: "horizontal",
+  },
 } satisfies Meta<typeof Separator>;
 
 export default meta;

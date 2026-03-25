@@ -18,7 +18,16 @@ const meta = {
   title: "ingredients/NavigationMenu",
   component: NavigationMenu,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    align: {
+      control: "select",
+      options: ["start", "center", "end"],
+      description: "Alignment of the dropdown positioner relative to the trigger",
+    },
+  },
+  args: {
+    align: "start",
+  },
   render: (args) => (
     <NavigationMenu {...args}>
       <NavigationMenuList>

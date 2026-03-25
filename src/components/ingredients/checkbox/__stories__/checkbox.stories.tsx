@@ -15,9 +15,32 @@ const meta: Meta<typeof Checkbox> = {
   title: "ingredients/Checkbox",
   component: Checkbox,
   tags: ["autodocs"],
+  argTypes: {
+    id: {
+      control: "text",
+      description: "HTML id attribute, used to associate with a Label",
+    },
+    checked: {
+      control: "boolean",
+      description: "Controlled checked state of the checkbox",
+    },
+    defaultChecked: {
+      control: "boolean",
+      description: "Initial checked state for uncontrolled usage",
+    },
+    disabled: {
+      control: "boolean",
+    },
+    required: {
+      control: "boolean",
+    },
+  },
   args: {
     id: "terms",
+    defaultChecked: false,
     disabled: false,
+    required: false,
+    required: false,
   },
   render: (args) => (
     <div className="flex items-center gap-2">

@@ -16,7 +16,20 @@ const meta = {
   title: "ingredients/Popover",
   component: Popover,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    open: {
+      control: "boolean",
+      description: "Controlled open state of the popover",
+    },
+    defaultOpen: {
+      control: "boolean",
+      description: "Whether the popover is open by default (uncontrolled)",
+    },
+  },
+  args: {
+    open: undefined,
+    defaultOpen: false,
+  },
 
   render: (args) => (
     <Popover {...args}>

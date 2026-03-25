@@ -17,9 +17,18 @@ const meta = {
   title: "ingredients/Collapsible",
   component: Collapsible,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    defaultOpen: {
+      control: "boolean",
+      description: "Whether the collapsible is initially expanded",
+    },
+    disabled: {
+      control: "boolean",
+    },
+  },
   args: {
     className: "w-96",
+    defaultOpen: false,
     disabled: false,
   },
   render: (args) => (

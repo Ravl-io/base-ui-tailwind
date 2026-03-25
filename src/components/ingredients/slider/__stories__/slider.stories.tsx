@@ -12,11 +12,35 @@ const meta = {
   title: "ingredients/Slider",
   component: Slider,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    defaultValue: {
+      control: "object",
+      description: "Initial value(s) as an array (uncontrolled).",
+    },
+    min: {
+      control: "number",
+    },
+    max: {
+      control: "number",
+    },
+    step: {
+      control: "number",
+    },
+    disabled: {
+      control: "boolean",
+    },
+    orientation: {
+      control: "select",
+      options: ["horizontal", "vertical"],
+    },
+  },
   args: {
     defaultValue: [33],
+    min: 0,
     max: 100,
     step: 1,
+    disabled: false,
+    orientation: "horizontal",
   },
 } satisfies Meta<typeof Slider>;
 

@@ -61,7 +61,11 @@ const meta = {
   args: {
     id: "terms",
     label: "I agree to the terms and conditions",
+    helperText: "",
+    error: "",
     disabled: false,
+    indeterminate: false,
+    classes: {},
   },
   render: (args) => <Checkbox {...args} />,
 } satisfies Meta<Omit<CheckboxProps, "children">>;

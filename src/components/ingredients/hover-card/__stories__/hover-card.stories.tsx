@@ -15,8 +15,25 @@ const meta = {
   title: "ingredients/HoverCard",
   component: HoverCard,
   tags: ["autodocs"],
-  argTypes: {},
-  args: {},
+  argTypes: {
+    defaultOpen: {
+      control: "boolean",
+      description: "Whether the hover card is initially open (uncontrolled)",
+    },
+    delay: {
+      control: "number",
+      description: "Delay in ms before the hover card opens on hover",
+    },
+    closeDelay: {
+      control: "number",
+      description: "Delay in ms before the hover card closes after unhover",
+    },
+  },
+  args: {
+    defaultOpen: false,
+    delay: 600,
+    closeDelay: 300,
+  },
   render: (args) => (
     <HoverCard {...args}>
       <HoverCardTrigger>Hover</HoverCardTrigger>

@@ -30,7 +30,15 @@ const meta = {
   title: "ingredients/DropdownMenu",
   component: DropdownMenu,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    disabled: {
+      control: "boolean",
+      description: "Whether the dropdown menu is disabled",
+    },
+  },
+  args: {
+    disabled: false,
+  },
   render: (args) => (
     <DropdownMenu {...args}>
       <DropdownMenuTrigger>Open</DropdownMenuTrigger>

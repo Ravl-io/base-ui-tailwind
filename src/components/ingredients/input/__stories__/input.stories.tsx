@@ -15,7 +15,19 @@ const meta = {
   title: "ingredients/Input",
   component: Input,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    type: {
+      control: "select",
+      options: ["text", "email", "password", "number", "search", "tel", "url"],
+      description: "The HTML input type",
+    },
+    placeholder: {
+      control: "text",
+    },
+    disabled: {
+      control: "boolean",
+    },
+  },
   args: {
     className: "w-96",
     type: "email",

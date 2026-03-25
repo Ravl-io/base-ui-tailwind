@@ -14,7 +14,14 @@ const meta = {
   title: "ingredients/Textarea",
   component: Textarea,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    placeholder: {
+      control: "text",
+    },
+    disabled: {
+      control: "boolean",
+    },
+  },
   args: {
     placeholder: "Type your message here.",
     disabled: false,

@@ -23,7 +23,15 @@ const meta = {
   title: "ingredients/AlertDialog",
   component: AlertDialog,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    open: {
+      control: "boolean",
+      description: "Controlled open state of the alert dialog",
+    },
+  },
+  args: {
+    open: undefined,
+  },
   render: (args) => (
     <AlertDialog {...args}>
       <AlertDialogTrigger>Open</AlertDialogTrigger>
