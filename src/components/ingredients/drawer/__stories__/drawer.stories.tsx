@@ -21,7 +21,30 @@ const meta = {
   title: "ingredients/Drawer",
   component: Drawer,
   tags: ["autodocs"],
+  argTypes: {
+    direction: {
+      control: "select",
+      options: ["top", "bottom", "left", "right"],
+      description: "The direction from which the drawer slides in",
+    },
+    modal: {
+      control: "boolean",
+      description: "Whether the drawer should be modal (blocks interaction with the rest of the page)",
+    },
+    dismissible: {
+      control: "boolean",
+      description: "Whether the drawer can be dismissed by clicking outside or pressing Escape",
+    },
+    handleOnly: {
+      control: "boolean",
+      description: "Whether only the handle can be used to drag the drawer",
+    },
+  },
   args: {
+    direction: "bottom",
+    modal: true,
+    dismissible: true,
+    handleOnly: false,
     onOpenChange: fn(),
     onClose: fn(),
     onAnimationEnd: fn(),

@@ -36,10 +36,12 @@ const meta = {
   },
   args: {
     name: "Login",
+    error: "",
     isSubmitting: false,
     labels: {
       submit: "Sign in",
     },
+    classes: {},
     onSubmit: () => {},
   },
   render: (args) => (

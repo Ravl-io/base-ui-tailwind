@@ -17,9 +17,20 @@ const meta = {
   component: ToggleGroup,
   tags: ["autodocs"],
   argTypes: {
+    variant: {
+      control: "select",
+      options: ["default", "outline"],
+    },
+    size: {
+      control: "select",
+      options: ["default", "sm", "lg"],
+    },
     multiple: {
       options: [true, false],
       control: { type: "radio" },
+    },
+    disabled: {
+      control: "boolean",
     },
   },
   args: {

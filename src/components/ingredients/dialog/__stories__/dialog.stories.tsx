@@ -22,7 +22,20 @@ const meta = {
   title: "ingredients/Dialog",
   component: Dialog,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    defaultOpen: {
+      control: "boolean",
+      description: "Whether the dialog is initially open (uncontrolled)",
+    },
+    modal: {
+      control: "boolean",
+      description: "Whether the dialog blocks interaction with the rest of the page",
+    },
+  },
+  args: {
+    defaultOpen: false,
+    modal: true,
+  },
   render: (args) => (
     <Dialog {...args}>
       <DialogTrigger>Open</DialogTrigger>

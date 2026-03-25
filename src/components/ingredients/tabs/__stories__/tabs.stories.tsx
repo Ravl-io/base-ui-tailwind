@@ -17,9 +17,19 @@ const meta = {
   title: "ingredients/Tabs",
   component: Tabs,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    defaultValue: {
+      control: "text",
+      description: "The value of the tab that should be active when initially rendered",
+    },
+    orientation: {
+      control: "select",
+      options: ["horizontal", "vertical"],
+    },
+  },
   args: {
     defaultValue: "account",
+    orientation: "horizontal",
     className: "w-96",
   },
   render: (args) => (

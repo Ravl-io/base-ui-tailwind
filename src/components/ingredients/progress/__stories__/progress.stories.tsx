@@ -11,7 +11,16 @@ const meta = {
   title: "ingredients/Progress",
   component: Progress,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    value: {
+      control: "number",
+      description: "Current progress value. Set to `undefined` for indeterminate state.",
+    },
+    max: {
+      control: "number",
+      description: "Maximum value of the progress bar.",
+    },
+  },
   args: {
     "aria-label": "Progress",
     value: 30,

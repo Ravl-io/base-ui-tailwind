@@ -43,8 +43,11 @@ const meta = {
   args: {
     id: "input",
     label: "Username",
+    helperText: "",
+    error: "",
     placeholder: "johndoe",
     disabled: false,
+    classes: {},
   },
 } satisfies Meta<typeof Input>;
 

@@ -16,9 +16,22 @@ const meta = {
   title: "ingredients/RadioGroup",
   component: RadioGroup,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    defaultValue: {
+      control: "text",
+      description: "The value of the initially selected radio item (uncontrolled).",
+    },
+    value: {
+      control: "text",
+      description: "The controlled value of the selected radio item.",
+    },
+    disabled: {
+      control: "boolean",
+    },
+  },
   args: {
     defaultValue: "comfortable",
+    disabled: false,
     className: "grid gap-2 grid-cols-[1rem_1fr] items-center",
   },
   render: (args) => (

@@ -18,7 +18,15 @@ const meta = {
   title: "ingredients/Pagination",
   component: Pagination,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    "aria-label": {
+      control: "text",
+      description: "Accessible label for the navigation landmark",
+    },
+  },
+  args: {
+    "aria-label": "pagination",
+  },
   render: (args) => (
     <Pagination {...args}>
       <PaginationContent>

@@ -64,6 +64,7 @@ const meta: Meta<typeof Button> = {
     children: "Button",
     disabled: false,
     isLoading: false,
+    label: { loading: "" },
   },
 } satisfies Meta<typeof Button>;
 

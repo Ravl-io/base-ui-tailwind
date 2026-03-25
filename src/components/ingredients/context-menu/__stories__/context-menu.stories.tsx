@@ -25,8 +25,15 @@ const meta = {
   title: "ingredients/ContextMenu",
   component: ContextMenu,
   tags: ["autodocs"],
-  argTypes: {},
-  args: {},
+  argTypes: {
+    disabled: {
+      control: "boolean",
+      description: "Whether the context menu is disabled",
+    },
+  },
+  args: {
+    disabled: false,
+  },
   render: (args) => (
     <ContextMenu {...args}>
       <ContextMenuTrigger className="bg-accent flex h-48 w-96 items-center justify-center rounded-md border border-dashed text-sm">

@@ -10,7 +10,15 @@ const meta = {
   title: "ingredients/Skeleton",
   component: Skeleton,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    "aria-label": {
+      control: "text",
+      description: "Accessible label describing the loading state.",
+    },
+  },
+  args: {
+    "aria-label": "Loading",
+  },
   parameters: {
     layout: "centered",
   },

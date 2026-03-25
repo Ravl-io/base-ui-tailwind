@@ -17,9 +17,20 @@ const meta: Meta<typeof Carousel> = {
   title: "ingredients/Carousel",
   component: Carousel,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    orientation: {
+      control: "select",
+      options: ["horizontal", "vertical"],
+    },
+    opts: {
+      control: "object",
+      description: "Embla Carousel options (e.g. loop, align, slidesToScroll)",
+    },
+  },
   args: {
     className: "w-full max-w-xs",
+    orientation: "horizontal",
+    opts: {},
   },
   render: (args) => (
     <Carousel {...args}>

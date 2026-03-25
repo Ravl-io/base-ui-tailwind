@@ -18,9 +18,15 @@ const meta = {
   title: "ingredients/Command",
   component: Command,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    loop: {
+      control: "boolean",
+      description: "Whether keyboard navigation should loop from last to first item and vice versa",
+    },
+  },
   args: {
     className: "rounded-lg w-96 border shadow-md",
+    loop: false,
   },
   render: (args) => (
     <Command {...args}>

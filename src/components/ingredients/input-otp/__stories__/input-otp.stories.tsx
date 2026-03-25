@@ -16,9 +16,23 @@ const meta = {
   title: "ingredients/InputOTP",
   component: InputOTP,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    maxLength: {
+      control: "number",
+      description: "Number of OTP input slots",
+    },
+    containerClassName: {
+      control: "text",
+      description: "Additional CSS class for the outer container",
+    },
+    disabled: {
+      control: "boolean",
+    },
+  },
   args: {
     maxLength: 6,
+    containerClassName: "",
+    disabled: false,
     onChange: fn(),
     onComplete: fn(),
     pattern: REGEXP_ONLY_DIGITS_AND_CHARS,

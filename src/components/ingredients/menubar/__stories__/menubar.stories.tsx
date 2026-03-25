@@ -27,8 +27,15 @@ const meta = {
   title: "ingredients/Menubar",
   component: Menubar,
   tags: ["autodocs"],
-  argTypes: {},
-
+  argTypes: {
+    loop: {
+      control: "boolean",
+      description: "Whether keyboard navigation loops from last item to first",
+    },
+  },
+  args: {
+    loop: false,
+  },
   render: (args) => (
     <Menubar {...args}>
       <MenubarMenu>

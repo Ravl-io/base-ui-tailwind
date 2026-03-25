@@ -45,7 +45,12 @@ const meta = {
   title: "ingredients/Table",
   component: Table,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    children: {
+      control: false,
+      description: "Table sub-components (TableHeader, TableBody, TableFooter, TableCaption)",
+    },
+  },
   render: (args) => (
     <Table {...args}>
       <TableCaption>A list of your recent invoices.</TableCaption>
