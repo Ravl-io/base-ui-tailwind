@@ -1,5 +1,11 @@
 # @ravl/base-ui-tailwind
 
+## 1.3.0
+
+### Minor Changes
+
+- 5567488: update to export pattern
+
 ## 1.2.2
 
 ### Patch Changes
